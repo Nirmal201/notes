@@ -20,7 +20,6 @@ const App = () => {
   useEffect(hook, []);
   const addNote = (event) => {
     event.preventDefault();
-
     const noteObject = {
       content: newNote,
       date: new Date().toISOString(),
