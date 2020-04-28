@@ -11,6 +11,17 @@ body {
   color: rgba(211, 211, 211, 0.849);
 }
 
+.App {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 40px;
+}
+
+h1 {
+  color: green;
+  font-style: italic;
+}
+
 button {
   padding: 5px;
   margin: 5px;
@@ -20,7 +31,19 @@ button:focus {
   outline: none;
 }
 
-.App {
-  max-width: 800px;
+.note {
+  color: rgba(211, 211, 211, 0.849);
+  padding-top: 3px;
+  margin-left: 10px;
+}
+.error {
   margin: 0 auto;
+  width: 500px;
+  color: red;
+  background: rgba(20, 8, 8, 0.534);
+  font-size: 15px;
+  border: 2px solid rgb(250, 73, 73);
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 10px;
 }

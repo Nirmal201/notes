@@ -10,7 +10,7 @@
       "id": 2,
       "content": "Browser can execute only Javascript",
       "date": "2019-05-30T18:39:34.091Z",
-      "important": true
+      "important": false
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "content": "hello",
       "date": "2020-04-26T19:04:47.827Z",
       "id": 4,
-      "important": true
+      "important": false
     },
     {
       "content": "POST method is used to add data to a REST  api",
@@ -41,6 +41,12 @@
       "date": "2020-04-27T04:22:40.145Z",
       "id": 7,
       "important": false
+    },
+    {
+      "content": "sg",
+      "date": "2020-04-28T09:30:28.599Z",
+      "id": 9,
+      "important": true
     }
   ]
 }
