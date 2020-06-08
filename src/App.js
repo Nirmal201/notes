@@ -12,9 +12,12 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    noteService.getAll().then((initialNotes) => {
-      setNotes(initialNotes);
-    });
+    noteService
+      .getAll()
+      .then((initialNotes) => {
+        setNotes(initialNotes);
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   const addNote = (event) => {
@@ -23,15 +26,15 @@ const App = () => {
       content: newNote,
       date: new Date().toISOString(),
       id: notes.length + 1,
-      important: Math.random() < 0.5,
+      important: Math.random() > 0.5,
     };
     noteService.create(noteObject).then((returnedNote) => {
       setNotes(notes.concat(returnedNote));
       setNewNote("");
     });
 
-    setNotes(notes.concat(noteObject));
-    setNewNote("");
+    // setNotes(notes.concat(noteObject));
+    // setNewNote("");
   };
 
   const toggleImportanceOf = (id) => {
@@ -47,11 +50,12 @@ const App = () => {
         setNotes(notes.map((note) => (note.id !== id ? note : returnedNote)));
       })
       .catch((error) => {
-        setErrorMessage(`Note ${note.content} was already removed.`);
+        setErrorMessage(
+          `Note ${note.content} was already removed from server.`
+        );
         setTimeout(() => {
           setErrorMessage(null);
-        }, 5000);
-        setNotes(notes.filter((n) => n.id !== id));
+        }, 4000);
       });
   };
 
