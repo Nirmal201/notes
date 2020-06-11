@@ -11,12 +11,13 @@ import NoteForm from "./components/NoteForm";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState("");
   const [showAll, setShowAll] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+
+  const noteFormRef = React.createRef();
 
   useEffect(() => {
     noteService
@@ -35,21 +36,12 @@ const App = () => {
       noteService.setToken(user.token);
     }
   }, []);
-  const addNote = (event) => {
-    event.preventDefault();
-    const noteObject = {
-      content: newNote,
-      date: new Date().toISOString(),
-      id: notes.length + 1,
-      important: Math.random() > 0.5,
-    };
+
+  const addNote = (noteObject) => {
+    noteFormRef.current.toggleVisibility();
     noteService.create(noteObject).then((returnedNote) => {
       setNotes(notes.concat(returnedNote));
-      setNewNote("");
     });
-
-    // setNotes(notes.concat(noteObject));
-    // setNewNote("");
   };
 
   const handleLogin = async (e) => {
@@ -77,6 +69,7 @@ const App = () => {
     setUser(null);
     window.localStorage.clear();
   };
+
   const toggleImportanceOf = (id) => {
     const note = notes.find((n) => n.id === id);
     const changedNote = {
@@ -99,15 +92,6 @@ const App = () => {
       });
   };
 
-  const notesToShow = showAll
-    ? notes
-    : notes.filter((note) => {
-        return note.important;
-      });
-  const handleNoteChange = (e) => {
-    setNewNote(e.target.value);
-  };
-
   const loginForm = () => {
     return (
       <div>
@@ -125,14 +109,16 @@ const App = () => {
   };
 
   const noteForm = () => (
-    <Togglable buttonLabel="New Note">
-      <NoteForm
-        onSubmit={addNote}
-        value={newNote}
-        handleChange={handleNoteChange}
-      />
+    <Togglable buttonLabel="New Note" ref={noteFormRef}>
+      <NoteForm createNote={addNote} />
     </Togglable>
   );
+
+  const notesToShow = showAll
+    ? notes
+    : notes.filter((note) => {
+        return note.important;
+      });
 
   return (
     <div className="App">
@@ -157,7 +143,6 @@ const App = () => {
           Show {showAll ? "'important'" : "'all'"}
         </button>
       </div>
-
       <br />
       <ul>
         {notesToShow.map((note) => (

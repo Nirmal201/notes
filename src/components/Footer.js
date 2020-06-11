@@ -5,7 +5,7 @@ const Footer = () => {
     color: "green",
     fontStyle: "italic",
     fontSize: 16,
-    position: "absolute",
+    position: "relative",
     bottom: 16,
   };
   return (
