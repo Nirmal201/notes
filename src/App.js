@@ -5,7 +5,7 @@ import "./App.css";
 import Notification from "./components/Notification";
 import Footer from "./components/Footer";
 import loginService from "./services/login";
-import LoginForm from "./components/Login";
+import LoginForm from "./components/LoginForm";
 import Togglable from "./components/Togglable";
 import NoteForm from "./components/NoteForm";
 
