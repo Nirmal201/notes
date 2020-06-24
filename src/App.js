@@ -130,16 +130,21 @@ const App = () => {
         loginForm()
       ) : (
         <div>
-          <h3>Logged in as {user.name}</h3>
+          <p className="loginUser">
+            Logged in as <span className="user">{user.name}</span>
+          </p>
           {noteForm()}
           <br></br>
-          <button onClick={() => handleLogOut()}> Log Out</button>
+          <button className="log" onClick={() => handleLogOut()}>
+            {" "}
+            Log Out
+          </button>
         </div>
       )}
       <br />
       <br />
       <div>
-        <button onClick={() => setShowAll(!showAll)}>
+        <button className="important" onClick={() => setShowAll(!showAll)}>
           Show {showAll ? "'important'" : "'all'"}
         </button>
       </div>

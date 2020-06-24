@@ -13,7 +13,7 @@ body {
 
 .App {
   max-width: 800px;
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 40px;
 }
 
@@ -23,7 +23,7 @@ h1 {
 }
 
 button {
-  padding: 5px;
+  padding: 8px;
   margin: 5px;
   border-radius: 8px;
 }
@@ -31,11 +31,55 @@ button:focus {
   outline: none;
 }
 
-.note {
-  color: rgba(211, 211, 211, 0.849);
-  padding-top: 3px;
+.log,
+.important,
+.m-important,
+.cancel {
+  border: transparent;
+  background-color: aliceblue;
+}
+.m-important {
+  padding: 5px;
+}
+.log,
+.important {
+  margin-left: 0;
+}
+.m-important {
   margin-left: 10px;
 }
+.cancel {
+  margin: 0 5px;
+}
+.loginForm {
+  padding: 10px;
+  margin: 10px;
+  padding-left: 0;
+  margin-left: 0;
+}
+.loginForm form div {
+  font-size: 18px;
+}
+.input {
+  margin: 10px;
+  padding: 5px;
+}
+.loginUser {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.user {
+  color: coral;
+  font-style: oblique;
+}
+
+.note {
+  color: rgba(255, 255, 255, 0.904);
+  padding-top: 3px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
 .error {
   margin: 0 auto;
   width: 500px;
